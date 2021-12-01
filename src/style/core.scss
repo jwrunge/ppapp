@@ -1,63 +1,73 @@
-html, body {
-	position: relative;
+// VARIABLES
+@import 'variables.scss';
+
+// CORE STRUCTURE
+html, body, main {
+	overflow: hidden;
+	margin: 0; padding: 0;
+}
+
+main {
+	position: fixed;
+	top: 0; left: 0;
+	background: radial-gradient($primary, darken($primary, 8%));
 	width: 100%;
+	height: 100vh;
+
+	// Show nav as sidebar
+	display: flex;
+	flex-wrap: nowrap;
+}
+
+nav {
 	height: 100%;
+	width: 80%;
+	transition: max-width .2s ease-in-out;
+	background-color: lighten($primary, 10%);
+	overflow: hidden;
 }
 
+.view {
+	height: 100%;
+	width: 100vw;
+	overflow-y: auto;
+	box-sizing: border-box;
+
+	padding: $spacer/4;
+	@include for-tablet-landscape-up {
+		padding: $spacer;
+		width: 100%;
+	}
+}
+
+// FONTS
 body {
-	color: #333;
-	margin: 0;
-	padding: 8px;
+	font-size: 16px;
+}
+
+// INTERACTIVE COMPONENTS
+
+
+// CONTAINERS
+.text-block {
+	background: white;
+	border-radius: $border-radius;
+	height: 100%;
+	padding: $spacer 0;
+	padding-right: $spacer;
 	box-sizing: border-box;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-}
 
-a {
-	color: rgb(0,100,200);
-	text-decoration: none;
-}
+	max-width: 70em;
+	margin: 0 auto;
 
-a:hover {
-	text-decoration: underline;
-}
+	.inner {
+		padding: $spacer;
+		padding-left: $spacer*2;
+		box-sizing: border-box;
+		height: 100%;
+		overflow-y: auto;
 
-a:visited {
-	color: rgb(0,80,160);
-}
-
-label {
-	display: block;
-}
-
-input, button, select, textarea {
-	font-family: inherit;
-	font-size: inherit;
-	-webkit-padding: 0.4em 0;
-	padding: 0.4em;
-	margin: 0 0 0.5em 0;
-	box-sizing: border-box;
-	border: 1px solid #ccc;
-	border-radius: 2px;
-}
-
-input:disabled {
-	color: #ccc;
-}
-
-button {
-	color: #333;
-	background-color: #f4f4f4;
-	outline: none;
-}
-
-button:disabled {
-	color: #999;
-}
-
-button:not(:disabled):active {
-	background-color: #ddd;
-}
-
-button:focus {
-	border-color: #666;
+		max-width: 60em;
+		margin: 0 auto;
+	}
 }
